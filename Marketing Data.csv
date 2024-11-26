@@ -1,0 +1,11 @@
+Campaign ID,Impressions,Clicks,Conversions,Spend,Revenue,Status
+1,1000,50,5,100,500,Active
+2,2000,20,1,200,400,Active
+3,1500,10,0,150,0,Paused
+4,3000,100,10,300,1000,Active
+5,2500,80,8,250,800,Paused
+6,1800,30,3,180,350,Active
+7,2200,55,6,220,600,Active
+8,1400,70,7,140,700,Active
+9,5000,250,25,500,2500,Paused
+10,3200,160,15,320,1500,Active
