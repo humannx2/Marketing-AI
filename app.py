@@ -39,6 +39,22 @@ def analyze_ad_copy(text):
 insights = analyze_ad_copy("Best discounts on electronics!")
 print(insights)
 
+def decision_agent(df, target_cpa):
+    actions = []
+    for _, row in df.iterrows():
+        if row["CTR"] < 1:
+            actions.append((row["Campaign ID"], "Pause", "Low CTR"))
+        elif row["Cost_per_Conversion"] > 3 * target_cpa:
+            actions.append((row["Campaign ID"], "Pause", "High Cost per Conversion"))
+        elif row["ROAS"] > 4:
+            actions.append((row["Campaign ID"], "Increase Budget", "High ROAS"))
+        elif row["ROAS"] < 1.5:
+            actions.append((row["Campaign ID"], "Decrease Budget", "Low ROAS"))
+    return actions
+
+decisions = decision_agent(df, target_cpa=50)
+print(decisions)
+
 
 # def optimizaton()
 
