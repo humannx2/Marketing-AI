@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 from transformers import pipeline
 
 # # demo data
@@ -55,7 +56,6 @@ def decision_agent(df, target_cpa):
 decisions = decision_agent(df, target_cpa=50)
 print(decisions)
 
-
 def execute_actions(df, decisions):
     for campaign_id, action, reason in decisions:
         if action == "Pause":
@@ -75,3 +75,15 @@ def generate_report(decisions):
 
 generate_report(decisions)
 
+def batch_process(df):
+    group_by_status = df.groupby("Status")
+    return {status: group for status, group in group_by_status}
+
+batches = batch_process(df)
+
+def visualize_performance(df):
+    df.groupby("Campaign ID")[["CTR", "ROAS"]].mean().plot(kind="bar")
+    plt.title("Campaign Performance")
+    plt.show()
+
+visualize_performance(df)
