@@ -20,6 +20,7 @@ The **Marketing AI Assistant** is designed to automate the management of marketi
 - **Programming Language**: Python
 - **Libraries**:
   - Data processing: `pandas`
+  - Visualization: `matplotlib`
   - AI/ML: `transformers` (Hugging Face)
   - File handling: `csv`
 - **Environment**: Local or cloud (can be adapted to API-based platforms)
