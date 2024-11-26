@@ -56,5 +56,22 @@ decisions = decision_agent(df, target_cpa=50)
 print(decisions)
 
 
-# def optimizaton()
+def execute_actions(df, decisions):
+    for campaign_id, action, reason in decisions:
+        if action == "Pause":
+            df.loc[df["Campaign ID"] == campaign_id, "Status"] = "Paused"
+        elif action == "Increase Budget":
+            df.loc[df["Campaign ID"] == campaign_id, "Spend"] *= 1.2
+        elif action == "Decrease Budget":
+            df.loc[df["Campaign ID"] == campaign_id, "Spend"] *= 0.8
+    return df
+
+updated_df = execute_actions(df, decisions)
+updated_df.to_csv("updated_campaign_data.csv", index=False)
+
+def generate_report(decisions):
+    report = pd.DataFrame(decisions, columns=["Campaign ID", "Action", "Reason"])
+    report.to_csv("campaign_report.csv", index=False)
+
+generate_report(decisions)
 
